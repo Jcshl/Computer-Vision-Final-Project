@@ -1,0 +1,68 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{assets/cover}[2023/04/26 Cover Page]
+
+%% Require title, author, studentid, advisor, college, department, grade.
+
+% 定义基本信息
+\newcommand*{\entitle}[1]{
+    \def\@entitle{#1}
+}
+\newcommand*{\advisor}[1]{
+    \def\@advisor{#1}
+}
+\newcommand*{\studentid}[1]{
+    \def\@studentid{#1}
+}
+\newcommand*{\college}[1]{
+    \def\@college{#1}
+}
+\newcommand*{\department}[1]{
+    \def\@department{#1}
+}
+\newcommand*{\grade}[1]{
+    \def\@grade{#1}
+}
+\newcommand*{\dateyear}[1]{
+    \def\@dateyear{#1}
+}
+\newcommand*{\datemonth}[1]{
+    \def\@datemonth{#1}
+}
+\newcommand*{\dateday}[1]{
+    \def\@dateday{#1}
+}
+
+\newcommand{\makecover}{
+    \begin{titlepage}
+        \begin{minipage}{100mm}
+            \songti{\zihao{-5}{
+                    \textbf{}{分类号}\uline{\makebox[41mm]{ }} \textbf{}{密级}\uline{\makebox[41mm]{ }}  \\
+                    \textbf{}{UDC}\uline{\hfill  \hfill}
+                }}
+        \end{minipage}
+        \hfill
+        \begin{minipage}{25mm}
+            \includegraphics[width=1.5in]{assets/images/logo.eps}
+        \end{minipage}
+        \vspace{20mm}\\
+        \centerline{\songti\zihao{-0}{本\ 科\ 课\ 程\ 论\ 文（设\ 计）}}
+
+
+        \vspace{15mm}
+        \centerline{\heiti\zihao{1}{\@title}}
+
+
+        \vspace{50mm}
+
+        \begin{center}
+            \heiti\zihao{3}{学生姓名}\uline{\makebox[30mm]{\songti{\@author}}}\heiti\zihao{3}{学号}\uline{\makebox[50mm]{\@studentid}}\par
+            \heiti\zihao{3}{指导教师}\uline{\makebox[92mm]{\songti{\@advisor}}}\par
+            \heiti\zihao{3}{院、系、中心}\uline{\makebox[80mm]{\songti{\@college}}}\par
+            \heiti\zihao{3}{专业年级}\uline{\makebox[92mm]{\songti{\@department}{\@grade}{级}}}\par
+            \heiti\zihao{4}{论文答辩日期}\uline{\makebox[85mm]{\songti{\@dateyear}{\heiti 年}{\@datemonth}{\heiti 月}{\@dateday}{\heiti 日}}}\par
+
+            \vspace{15mm}
+            \kaishu\zihao{-2}{中\ 国\ 海\ 洋\ 大\ 学}
+        \end{center}
+    \end{titlepage}
+}

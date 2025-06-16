@@ -1,0 +1,53 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{assets/abstractkeywords}[2023/04/26 Abstract and Keyword Page]
+
+%% Require cnabstract, cnkeyword, enabstract, enkeywords.
+
+\RequirePackage{abstract}
+
+\newcommand{\cnabstractkeywords}[2]{
+    \def\@cnabstract{#1}
+    \def\@cnkeywords{#2}
+}
+
+\newcommand{\enabstractkeywords}[2]{
+    \def\@enabstract{#1}
+    \def\@enkeywords{#2}
+}
+
+\newcommand{\makeabstract}{
+    \newpage
+    \pagenumbering{Roman}
+    \phantomsection
+    \ifdefined\@cnabstract{
+            \addcontentsline{toc}{section}{摘要}
+            \thispagestyle{zhabstract}
+            \begin{center}
+                \zihao{3}{\heiti{\@title}}
+            \end{center}
+            \renewcommand\abstractname{\zihao{3}{\heiti{摘\ \ \ 要}}}
+            \begin{abstract}
+                \zihao{-4}{\songti{\@cnabstract}}\par
+                \zihao{-4}{\heiti{\noindent \textbf{\\ 关键词：\@cnkeywords}}}
+            \end{abstract}
+            \vspace{5mm}
+            \newpage
+        }
+    \fi
+    \phantomsection
+    \ifdefined\@enabstract{
+            \addcontentsline{toc}{section}{Abstract}
+            \thispagestyle{enabstract}
+            \begin{center}
+                \zihao{3}{\heiti{\@entitle}}
+            \end{center}
+            \renewcommand\abstractname{\zihao{3}{\heiti{Abstract}}}
+            \begin{abstract}
+                \zihao{-4}{\songti{\@enabstract}}\par
+                \zihao{-4}{\heiti{\noindent \textbf{\\ Keywords:\@enkeywords}}}
+            \end{abstract}
+            \vspace{5mm}
+            \newpage
+        }
+    \fi
+}
